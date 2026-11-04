@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ContextCon text banner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+/* Meko brand tokens — from meko-brand-guidelines v0.2 */
+:root{
+  --ground:#000000; --panel:#121017; --purple:#7859fe; --purple-mid:#5f46cd; --purple-deep:#20154f;
+  --white:#ffffff; --text:#e8e6ee; --muted:#9a97a8; --dim:#6a6778;
+  --sans:'Inter',system-ui,-apple-system,sans-serif; --mono:'Roboto Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--ground)}
+body{min-height:100vh;display:grid;place-items:center;-webkit-font-smoothing:antialiased}
+.banner{position:relative;width:1000px;height:300px;overflow:hidden;background:var(--ground);font-family:var(--sans);color:var(--text)}
+.bg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.lead{position:absolute;left:40px;top:40px;bottom:40px;width:330px;display:flex;flex-direction:column}
+h1{margin:0;font-weight:inherit}
+h1 .t{display:block;width:300px;color:var(--white)}
+h1 .t svg{display:block;width:100%;height:auto}
+h1 .s{display:block;margin-top:10px;font-size:26px;font-weight:600;letter-spacing:-.02em;line-height:1.1;color:var(--purple)}
+.lede{margin:auto 0 0;text-wrap:pretty;font-size:15px;line-height:1.5;color:var(--white)}
+.body{position:absolute;left:418px;right:40px;top:40px;bottom:40px;display:flex;flex-direction:column;gap:10px;
+  padding-left:26px;border-left:1px solid rgba(255,255,255,.18)}
+.body p{margin:0;text-wrap:pretty;font-size:13.5px;line-height:1.5;color:var(--muted)}
+.body b{font-weight:600;color:var(--text)}
+.m{font-family:var(--mono);font-size:12.5px;color:var(--text)}
+.body .close{margin-top:auto;font-size:14.5px;font-weight:600;color:var(--white);line-height:1.45}
+.body .close em{font-style:normal;color:var(--purple)}
+</style>
+</head>
+<body>
+<aside class="banner" aria-label="ContextCon: Remember everything">
+  <svg class="bg" viewBox="0 0 1000 300" aria-hidden="true">
+    <defs>
+      <radialGradient id="glow" cx="1" cy="1.1" r=".45">
+        <stop offset="0" stop-color="#20154f" stop-opacity=".8"/>
+        <stop offset="1" stop-color="#20154f" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="fade" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#fff" stop-opacity=".35"/>
+        <stop offset=".45" stop-color="#fff" stop-opacity=".7"/>
+        <stop offset="1" stop-color="#fff" stop-opacity="1"/>
+      </linearGradient>
+      <mask id="m"><rect width="1000" height="300" fill="url(#fade)"/><rect x="430" y="36" width="540" height="140" fill="#000" fill-opacity=".55"/></mask>
+    </defs>
+    <rect width="1000" height="300" fill="url(#glow)"/>
+    <g mask="url(#m)">
+      <g stroke="#ffffff" stroke-opacity=".045" stroke-width="1"><line x1="0" y1="0" x2="0" y2="300"/><line x1="25" y1="0" x2="25" y2="300"/><line x1="50" y1="0" x2="50" y2="300"/><line x1="75" y1="0" x2="75" y2="300"/><line x1="100" y1="0" x2="100" y2="300"/><line x1="125" y1="0" x2="125" y2="300"/><line x1="150" y1="0" x2="150" y2="300"/><line x1="175" y1="0" x2="175" y2="300"/><line x1="200" y1="0" x2="200" y2="300"/><line x1="225" y1="0" x2="225" y2="300"/><line x1="250" y1="0" x2="250" y2="300"/><line x1="275" y1="0" x2="275" y2="300"/><line x1="300" y1="0" x2="300" y2="300"/><line x1="325" y1="0" x2="325" y2="300"/><line x1="350" y1="0" x2="350" y2="300"/><line x1="375" y1="0" x2="375" y2="300"/><line x1="400" y1="0" x2="400" y2="300"/><line x1="425" y1="0" x2="425" y2="300"/><line x1="450" y1="0" x2="450" y2="300"/><line x1="475" y1="0" x2="475" y2="300"/><line x1="500" y1="0" x2="500" y2="300"/><line x1="525" y1="0" x2="525" y2="300"/><line x1="550" y1="0" x2="550" y2="300"/><line x1="575" y1="0" x2="575" y2="300"/><line x1="600" y1="0" x2="600" y2="300"/><line x1="625" y1="0" x2="625" y2="300"/><line x1="650" y1="0" x2="650" y2="300"/><line x1="675" y1="0" x2="675" y2="300"/><line x1="700" y1="0" x2="700" y2="300"/><line x1="725" y1="0" x2="725" y2="300"/><line x1="750" y1="0" x2="750" y2="300"/><line x1="775" y1="0" x2="775" y2="300"/><line x1="800" y1="0" x2="800" y2="300"/><line x1="825" y1="0" x2="825" y2="300"/><line x1="850" y1="0" x2="850" y2="300"/><line x1="875" y1="0" x2="875" y2="300"/><line x1="900" y1="0" x2="900" y2="300"/><line x1="925" y1="0" x2="925" y2="300"/><line x1="950" y1="0" x2="950" y2="300"/><line x1="975" y1="0" x2="975" y2="300"/><line x1="1000" y1="0" x2="1000" y2="300"/><line x1="0" y1="0" x2="1000" y2="0"/><line x1="0" y1="25" x2="1000" y2="25"/><line x1="0" y1="50" x2="1000" y2="50"/><line x1="0" y1="75" x2="1000" y2="75"/><line x1="0" y1="100" x2="1000" y2="100"/><line x1="0" y1="125" x2="1000" y2="125"/><line x1="0" y1="150" x2="1000" y2="150"/><line x1="0" y1="175" x2="1000" y2="175"/><line x1="0" y1="200" x2="1000" y2="200"/><line x1="0" y1="225" x2="1000" y2="225"/><line x1="0" y1="250" x2="1000" y2="250"/><line x1="0" y1="275" x2="1000" y2="275"/><line x1="0" y1="300" x2="1000" y2="300"/></g>
+      <g stroke="#7859fe" stroke-opacity=".16" stroke-width="1" stroke-dasharray="2 4"><line x1="275" y1="75" x2="350" y2="150"/><line x1="350" y1="150" x2="300" y2="250"/><line x1="350" y1="150" x2="450" y2="225"/><line x1="350" y1="150" x2="525" y2="100"/><line x1="525" y1="100" x2="650" y2="50"/><line x1="525" y1="100" x2="775" y2="125"/><line x1="775" y1="125" x2="900" y2="75"/><line x1="775" y1="125" x2="950" y2="250"/><line x1="450" y1="225" x2="600" y2="200"/><line x1="600" y1="200" x2="700" y2="275"/><line x1="600" y1="200" x2="775" y2="125"/><line x1="650" y1="50" x2="900" y2="75"/></g>
+      <g fill="#7859fe" fill-opacity=".28"><rect x="272" y="72" width="6" height="6"/><rect x="347" y="147" width="6" height="6"/><rect x="297" y="247" width="6" height="6"/><rect x="447" y="222" width="6" height="6"/><rect x="522" y="97" width="6" height="6"/><rect x="647" y="47" width="6" height="6"/><rect x="772" y="122" width="6" height="6"/><rect x="897" y="72" width="6" height="6"/><rect x="947" y="247" width="6" height="6"/><rect x="697" y="272" width="6" height="6"/><rect x="597" y="197" width="6" height="6"/></g>
+      <g stroke="#ffffff" stroke-opacity=".22" stroke-width="1"><path d="M95 25H105M100 20V30"/><path d="M395 50H405M400 45V55"/><path d="M420 275H430M425 270V280"/><path d="M695 25H705M700 20V30"/><path d="M970 150H980M975 145V155"/><path d="M845 275H855M850 270V280"/><path d="M20 175H30M25 170V180"/><path d="M570 150H580M575 145V155"/></g>
+    </g>
+  </svg>
+
+  <div class="lead">
+    <h1 aria-label="ContextCon: Remember everything"><span class="t"><svg viewBox="0 -670 5291 670" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g transform="scale(1,-1)" fill="currentColor"><path transform="translate(0 0)" d="M557 441H424Q424 497 391.5 529.5Q359 562 302 562Q246 562 214.0 529.5Q182 497 182 441V229Q182 174 214.0 141.5Q246 109 302 109Q359 109 391.5 141.5Q424 174 424 229H557Q557 174 539.0 130.0Q521 86 487.5 55.0Q454 24 407.0 7.0Q360 -10 302 -10Q244 -10 197.0 7.0Q150 24 117.0 55.0Q84 86 66.5 130.0Q49 174 49 229V441Q49 496 66.5 540.0Q84 584 117.0 615.0Q150 646 197.0 663.0Q244 680 302 680Q360 680 407.0 663.0Q454 646 487.5 615.0Q521 584 539.0 540.0Q557 496 557 441Z"/><path transform="translate(531 0)" d="M49 441Q49 496 66.5 540.0Q84 584 117.0 615.0Q150 646 197.0 663.0Q244 680 302 680Q360 680 407.0 663.0Q454 646 487.5 615.0Q521 584 539.0 540.0Q557 496 557 441V229Q557 174 539.0 130.0Q521 86 487.5 55.0Q454 24 407.0 7.0Q360 -10 302 -10Q244 -10 197.0 7.0Q150 24 117.0 55.0Q84 86 66.5 130.0Q49 174 49 229ZM182 441V229Q182 174 214.0 141.5Q246 109 302 109Q359 109 391.5 141.5Q424 174 424 229V441Q424 497 391.5 529.5Q359 562 302 562Q246 562 214.0 529.5Q182 497 182 441Z"/><path transform="translate(1067 0)" d="M578 670V0H461L203 406V0H70V670H187L445 265V670Z"/><path transform="translate(1648 0)" d="M516 552H337V0H204V552H26V670H516Z"/><path transform="translate(2121 0)" d="M513 552H203V401H478V283H203V119H513V0H70V670H513Z"/><path transform="translate(2607 0)" d="M426 670H574L389 343L583 0H434L304 240L174 0H25L219 343L36 670H184L304 446Z"/><path transform="translate(3148 0)" d="M516 552H337V0H204V552H26V670H516Z"/><path transform="translate(3621 0)" d="M557 441H424Q424 497 391.5 529.5Q359 562 302 562Q246 562 214.0 529.5Q182 497 182 441V229Q182 174 214.0 141.5Q246 109 302 109Q359 109 391.5 141.5Q424 174 424 229H557Q557 174 539.0 130.0Q521 86 487.5 55.0Q454 24 407.0 7.0Q360 -10 302 -10Q244 -10 197.0 7.0Q150 24 117.0 55.0Q84 86 66.5 130.0Q49 174 49 229V441Q49 496 66.5 540.0Q84 584 117.0 615.0Q150 646 197.0 663.0Q244 680 302 680Q360 680 407.0 663.0Q454 646 487.5 615.0Q521 584 539.0 540.0Q557 496 557 441Z"/><path transform="translate(4152 0)" d="M49 441Q49 496 66.5 540.0Q84 584 117.0 615.0Q150 646 197.0 663.0Q244 680 302 680Q360 680 407.0 663.0Q454 646 487.5 615.0Q521 584 539.0 540.0Q557 496 557 441V229Q557 174 539.0 130.0Q521 86 487.5 55.0Q454 24 407.0 7.0Q360 -10 302 -10Q244 -10 197.0 7.0Q150 24 117.0 55.0Q84 86 66.5 130.0Q49 174 49 229ZM182 441V229Q182 174 214.0 141.5Q246 109 302 109Q359 109 391.5 141.5Q424 174 424 229V441Q424 497 391.5 529.5Q359 562 302 562Q246 562 214.0 529.5Q182 497 182 441Z"/><path transform="translate(4688 0)" d="M578 670V0H461L203 406V0H70V670H187L445 265V670Z"/></g></svg></span><span class="s">Remember everything</span></h1>
+    <p class="lede">is a worldwide virtual hackathon for developers building the next generation of agentic apps.</p>
+  </div>
+
+  <div class="body">
+    <p>Most AI agents start from zero every session and can’t share what they’ve learned. With Meko, the self-learning context engine built on YugabyteDB, you’ll build agents with <b>collective memory</b>, <b>shared knowledge</b>, and <b>full decision traces</b>.</p>
+    <p>They connect through a <span class="m">single MCP endpoint</span> to the tools you already use, like Claude, Cursor, Codex, LangChain, and CrewAI.</p>
+    <p class="close">Start free, build from anywhere, and show what happens when <em>one agent’s learning becomes every agent’s advantage.</em></p>
+  </div>
+</aside>
+</body>
+</html>
