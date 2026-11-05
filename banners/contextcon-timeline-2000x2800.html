@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ContextCon timeline tall</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+/* Meko brand tokens — from meko-brand-guidelines v0.2 */
+:root{
+  --ground:#000000; --purple:#7859fe; --white:#ffffff;
+  --text:#e8e6ee; --muted:#9a97a8; --dim:#6a6778; --line:rgba(255,255,255,.22);
+  --sans:'Inter',system-ui,-apple-system,sans-serif; --mono:'Roboto Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--ground)}
+body{min-height:100vh;display:grid;place-items:center;-webkit-font-smoothing:antialiased}
+.tl{position:relative;width:2000px;height:2800px;overflow:hidden;background:var(--ground);font-family:var(--sans);color:var(--text)}
+.tex{position:absolute;left:0;top:0;width:2000px;height:1400px;display:block}
+header{position:absolute;left:160px;top:200px}
+.eyebrow{margin:0;font-size:48px;font-weight:600;letter-spacing:-.01em;color:var(--purple)}
+h1{margin:24px 0 0;font-size:220px;line-height:.95;font-weight:600;letter-spacing:-.045em;color:var(--white)}
+ol{list-style:none;margin:0;padding:0;position:absolute;left:160px;right:160px;top:860px;bottom:200px;
+   display:grid;grid-template-rows:repeat(5,1fr)}
+/* the vertical rule runs node-centre to node-centre */
+ol::before{content:'';position:absolute;left:28.5px;width:3px;top:calc(10% - 0px);bottom:calc(10% - 0px);background:var(--line)}
+.step{position:relative;display:grid;grid-template-columns:120px 760px 1fr;align-items:center}
+.node{position:relative;width:60px;height:60px;background:var(--ground);border:5px solid var(--white)}
+.next .node{background:var(--purple);border-color:var(--purple)}
+.tbd .node{border-style:dashed;border-color:var(--muted)}
+.when{display:flex;flex-direction:column}
+.n{font-family:var(--mono);font-size:30px;letter-spacing:.14em;color:var(--dim);margin-bottom:18px}
+.d{font-size:150px;line-height:.95;font-weight:600;letter-spacing:-.04em;color:var(--white);white-space:nowrap}
+.y{margin-top:22px;font-family:var(--mono);font-size:40px;letter-spacing:.06em;color:var(--muted)}
+.next .d{color:var(--purple)}
+.tbd .d{color:var(--muted)}
+.l{margin:0;font-size:64px;line-height:1.25;letter-spacing:-.015em;color:var(--text)}
+</style>
+</head>
+<body>
+<main class="tl" aria-label="ContextCon timeline">
+  <svg class="tex" viewBox="0 0 2000 1400" aria-hidden="true">
+    <defs>
+      <filter id="marble" x="-10%" y="-10%" width="120%" height="120%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.0022 0.005" numOctaves="2" seed="23" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="240" xChannelSelector="R" yChannelSelector="G" result="d"/>
+        <feGaussianBlur in="d" stdDeviation="7"/>
+      </filter>
+      <radialGradient id="fade" cx="1" cy="0" r=".7" gradientTransform="translate(1 0) scale(1 1.43) translate(-1 0)">
+        <stop offset="0" stop-color="#fff" stop-opacity="1"/>
+        <stop offset=".4" stop-color="#fff" stop-opacity=".8"/>
+        <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+      </radialGradient>
+      <mask id="m"><rect width="2000" height="1400" fill="url(#fade)"/></mask>
+    </defs>
+    <g mask="url(#m)"><g filter="url(#marble)">
+      <path d="M620 -300 C1200 -200 1380 -340 1580 -160 S1880 -70 2140 -140" stroke="#e9e6ff" stroke-width="24" fill="none" opacity="0.6"/>
+<path d="M620 -180 C1200 -80 1380 -220 1580 -40 S1880 50 2140 -20" stroke="#8ea8ff" stroke-width="80" fill="none" opacity="0.7"/>
+<path d="M620 -50 C1200 50 1380 -90 1580 90 S1880 180 2140 110" stroke="#c9c2ff" stroke-width="20" fill="none" opacity="0.55"/>
+<path d="M620 50 C1200 150 1380 10 1580 190 S1880 280 2140 210" stroke="#7859fe" stroke-width="120" fill="none" opacity="0.85"/>
+<path d="M620 190 C1200 290 1380 150 1580 330 S1880 420 2140 350" stroke="#4a35a2" stroke-width="110" fill="none" opacity="0.9"/>
+<path d="M620 310 C1200 410 1380 270 1580 450 S1880 540 2140 470" stroke="#20154f" stroke-width="140" fill="none" opacity="1"/>
+<path d="M640 -100 C1220 0 1400 -140 1600 40 S1900 130 2140 60" stroke="#fff" stroke-width="4" fill="none" opacity="0.6"/>
+<path d="M640 130 C1220 230 1400 90 1600 270 S1900 360 2140 290" stroke="#fff" stroke-width="4" fill="none" opacity="0.45"/>
+    </g></g>
+  </svg>
+
+  <header>
+    <p class="eyebrow">ContextCon: Remember everything</p>
+    <h1>Timeline</h1>
+  </header>
+
+  <ol>
+    <li class="step next">
+      <span class="node" aria-hidden="true"></span>
+      <div class="when"><span class="n">01</span><time class="d">Nov 7</time><span class="y">2026</span></div>
+      <p class="l">Registration opens<br>Build phase begins</p>
+    </li>
+    <li class="step ">
+      <span class="node" aria-hidden="true"></span>
+      <div class="when"><span class="n">02</span><time class="d">Jan 17</time><span class="y">2027</span></div>
+      <p class="l">Submissions due</p>
+    </li>
+    <li class="step ">
+      <span class="node" aria-hidden="true"></span>
+      <div class="when"><span class="n">03</span><time class="d">Jan 18–24</time><span class="y">2027</span></div>
+      <p class="l">Judging</p>
+    </li>
+    <li class="step tbd">
+      <span class="node" aria-hidden="true"></span>
+      <div class="when"><span class="n">04</span><time class="d">TBD</time><span class="y">&nbsp;</span></div>
+      <p class="l">Final demo day<br>(online)</p>
+    </li>
+    <li class="step ">
+      <span class="node" aria-hidden="true"></span>
+      <div class="when"><span class="n">05</span><time class="d">Feb</time><span class="y">2027</span></div>
+      <p class="l">Winners announced</p>
+    </li>
+  </ol>
+</main>
+</body>
+</html>
