@@ -8,6 +8,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+@font-face{font-family:'Bloka';src:url('../Bloka-Regular.otf') format('opentype');font-weight:400;font-display:block}
+@font-face{font-family:'Bloka';src:url('../Bloka-SemiBold.otf') format('opentype');font-weight:600;font-display:block}
+@font-face{font-family:'Bloka';src:url('../Bloka-Bold.otf') format('opentype');font-weight:700;font-display:block}
+/* Bloka: titles only, uppercase, tight tracking (guidelines: -1.8px at 80px) */
+.bloka{font-family:'Bloka',var(--sans);text-transform:uppercase;letter-spacing:-.0225em}
 /* Meko brand tokens — from meko-brand-guidelines v0.2 */
 :root{
   --ground:#000000; --panel:#121017; --purple:#7859fe; --white:#ffffff;
@@ -22,7 +27,7 @@ body{min-height:100vh;display:grid;place-items:center;-webkit-font-smoothing:ant
 
 header{position:absolute;left:160px;right:160px;top:200px}
 .eyebrow{margin:0;font-size:46px;font-weight:600;letter-spacing:-.01em;color:var(--purple)}
-h1{margin:20px 0 0;font-size:200px;line-height:.95;font-weight:600;letter-spacing:-.045em;color:var(--white)}
+h1{margin:20px 0 0;font-size:200px;line-height:.95;font-weight:700;color:var(--white)}
 
 ol{list-style:none;margin:0;padding:0;position:absolute;left:160px;right:160px;top:740px;bottom:200px;
    display:grid;grid-template-rows:repeat(5,1fr);row-gap:48px}
@@ -39,7 +44,7 @@ ol::before{content:'';position:absolute;left:24px;width:3px;top:166px;bottom:166
 .tbd .card{background:transparent;border:2px dashed var(--line-2)}
 .n{align-self:start;margin-top:64px;font-family:var(--mono);font-size:30px;letter-spacing:.14em;color:var(--dim)}
 .when{display:flex;flex-direction:column}
-.d{font-size:112px;line-height:1;font-weight:600;letter-spacing:-.035em;color:var(--white);white-space:nowrap}
+.d{font-size:112px;line-height:1;font-weight:700;color:var(--white);white-space:nowrap}
 .next .d{color:var(--purple)}
 .tbd .d{color:var(--muted)}
 .y{margin-top:20px;font-family:var(--mono);font-size:34px;letter-spacing:.06em;color:var(--muted)}
@@ -54,14 +59,14 @@ ol::before{content:'';position:absolute;left:24px;width:3px;top:166px;bottom:166
 <main class="tl" aria-label="ContextCon timeline">
   <header>
     <p class="eyebrow">ContextCon: Remember everything</p>
-    <h1>Timeline</h1>
+    <h1 class="bloka">Timeline</h1>
   </header>
   <ol>
     <li class="step next">
       <span class="node" aria-hidden="true"></span>
       <div class="card">
         <span class="n">01</span>
-        <div class="when"><time class="d">Nov 7</time><span class="y">2026</span></div>
+        <div class="when"><time class="d bloka">Nov 7</time><span class="y">2026</span></div>
         <p class="l">Registration opens<br>Build phase begins</p>
         <span class="pill">Up next</span>
       </div>
@@ -70,7 +75,7 @@ ol::before{content:'';position:absolute;left:24px;width:3px;top:166px;bottom:166
       <span class="node" aria-hidden="true"></span>
       <div class="card">
         <span class="n">02</span>
-        <div class="when"><time class="d">Jan 17</time><span class="y">2027</span></div>
+        <div class="when"><time class="d bloka">Jan 17</time><span class="y">2027</span></div>
         <p class="l">Submissions due</p>
         
       </div>
@@ -79,7 +84,7 @@ ol::before{content:'';position:absolute;left:24px;width:3px;top:166px;bottom:166
       <span class="node" aria-hidden="true"></span>
       <div class="card">
         <span class="n">03</span>
-        <div class="when"><time class="d">Jan 18–24</time><span class="y">2027</span></div>
+        <div class="when"><time class="d bloka">Jan 18–24</time><span class="y">2027</span></div>
         <p class="l">Judging</p>
         
       </div>
@@ -88,7 +93,7 @@ ol::before{content:'';position:absolute;left:24px;width:3px;top:166px;bottom:166
       <span class="node" aria-hidden="true"></span>
       <div class="card">
         <span class="n">04</span>
-        <div class="when"><time class="d">TBD</time><span class="y">Date to be announced</span></div>
+        <div class="when"><time class="d bloka">TBD</time><span class="y">Date to be announced</span></div>
         <p class="l">Final demo day<br>(online)</p>
         
       </div>
@@ -97,7 +102,7 @@ ol::before{content:'';position:absolute;left:24px;width:3px;top:166px;bottom:166
       <span class="node" aria-hidden="true"></span>
       <div class="card">
         <span class="n">05</span>
-        <div class="when"><time class="d">Feb</time><span class="y">2027</span></div>
+        <div class="when"><time class="d bloka">Feb</time><span class="y">2027</span></div>
         <p class="l">Winners announced</p>
         
       </div>
