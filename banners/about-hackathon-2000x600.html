@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About the hackathon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Bloka';src:url('../Bloka-Bold.otf') format('opentype');font-weight:700;font-display:block}
+/* Meko brand tokens — from meko-brand-guidelines v0.2 */
+:root{
+  --ground:#000000; --panel:#121017; --purple:#7859fe; --white:#ffffff;
+  --text:#e8e6ee; --muted:#9a97a8; --line-2:rgba(255,255,255,.18);
+  --sans:'Inter',system-ui,-apple-system,sans-serif; --mono:'Roboto Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--ground)}
+body{min-height:100vh;display:grid;place-items:center;-webkit-font-smoothing:antialiased}
+.about{position:relative;width:2000px;height:600px;overflow:hidden;background:var(--ground);font-family:var(--sans);color:var(--text);
+  display:grid;grid-template-columns:640px 1fr;padding:84px 112px}
+/* one expressive surface: a soft 135° purple glow behind the left column */
+.about::before{content:'';position:absolute;left:-260px;top:-300px;width:900px;height:900px;border-radius:50%;
+  background:linear-gradient(135deg,#7859fe 0%,#4a35a2 48%,#20154f 100%);opacity:.22;filter:blur(120px)}
+.lead{position:relative;display:flex;flex-direction:column;align-items:flex-start;padding-right:64px;border-right:2px solid var(--line-2)}
+.tag{margin:0;font-family:var(--mono);font-size:22px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--purple);background:rgba(120,89,254,.16);border:2px solid rgba(120,89,254,.5);border-radius:999px;padding:10px 24px}
+h1{margin:0;font-family:'Bloka',var(--sans);font-weight:700;font-size:92px;line-height:.92;letter-spacing:-.0225em;text-transform:uppercase;color:var(--white)}
+.tagline{margin:auto 0 0;font-size:36px;line-height:1.25;font-weight:600;letter-spacing:-.015em;color:var(--purple);text-wrap:balance}
+.m{font-family:var(--mono);font-size:.9em;color:var(--white)}
+.copy{position:relative;padding-left:72px;display:flex;flex-direction:column;justify-content:center}
+.copy p{margin:0;font-size:27px;line-height:1.5;color:var(--muted);text-wrap:pretty}
+.copy p + p{margin-top:22px}
+.copy b{font-weight:600;color:var(--white)}
+.link{margin-top:26px !important;font-size:27px;font-weight:600;color:var(--white) !important}
+</style>
+</head>
+<body>
+<section class="about" aria-labelledby="t">
+  <div class="lead">
+    <h1 id="t">About the<br>hackathon</h1>
+    <p class="tagline">One agent’s learning becomes every agent’s advantage.</p>
+  </div>
+  <div class="copy">
+    <p>Every agentic app is built from models, tools, governance and context. Models are a market and tools are being standardized by MCP. <b>Context is still hand-rolled from scratch, and it decides whether everything else pays off.</b></p>
+    <p>Meko gives your agents <b>one universal, governed context</b>. It connects through a <span class="m">single MCP endpoint</span> to the tools you already use, scores every retrieval for relevance, explains what is missing, and learns over time.</p>
+    <p class="link">Start free, build from anywhere, and show us what agents can do when they stop forgetting.</p>
+  </div>
+</section>
+</body>
+</html>
