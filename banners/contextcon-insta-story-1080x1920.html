@@ -19,7 +19,7 @@
 html,body{margin:0;background:var(--ground)}
 body{min-height:100vh;display:grid;place-items:center;-webkit-font-smoothing:antialiased}
 .story{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--ground);font-family:var(--sans);color:var(--text)}
-.photo{position:absolute;left:90px;top:920px;width:1000px;height:1000px;background:url(assets/linkedin-robot.jpg) center/cover no-repeat}
+.photo{position:absolute;left:120px;top:920px;width:1000px;height:1000px;background:url(assets/linkedin-robot.jpg) center/cover no-repeat}
 .photo::after{content:'';position:absolute;inset:0;background:
   linear-gradient(180deg,#000 0%,rgba(0,0,0,.6) 12%,rgba(0,0,0,0) 26%),
   linear-gradient(90deg,#000 0%,rgba(0,0,0,0) 16%)}
@@ -31,12 +31,12 @@ body{min-height:100vh;display:grid;place-items:center;-webkit-font-smoothing:ant
 h1{margin:36px 0 0;width:920px}
 h1 img{display:block;width:100%;height:auto}
 .lede{margin:44px 0 0;font-size:42px;line-height:1.32;letter-spacing:-.01em;color:var(--white);text-wrap:balance}
-.prize{position:absolute;left:80px;right:80px;top:1500px;z-index:1;display:flex;align-items:center;gap:24px;background:var(--panel);border:2px solid var(--line-2);border-radius:24px;padding:26px 40px}
+.prize{margin-top:52px;align-self:flex-start;display:flex;align-items:center;gap:24px;background:var(--panel);border:2px solid var(--line-2);border-radius:24px;padding:28px 40px 30px 32px}
 .prize svg{flex:none;width:60px;height:60px;display:block}
-.prize .k{font-family:var(--mono);font-size:26px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--white);white-space:nowrap}
-.prize .v{margin-left:auto;font-family:'Bloka',var(--sans);font-size:84px;line-height:1;font-weight:700;letter-spacing:-.0225em;color:var(--lime);white-space:nowrap}
+.prize .k{display:block;font-family:var(--mono);font-size:24px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--white);white-space:nowrap}
+.prize .v{display:block;margin-top:12px;font-family:'Bloka',var(--sans);font-size:76px;line-height:1;font-weight:700;letter-spacing:-.0225em;color:var(--lime);white-space:nowrap}
 .meko{width:240px}
-.powered{position:absolute;left:80px;top:1664px;margin:0;display:flex;align-items:center;gap:14px;
+.powered{position:absolute;left:80px;bottom:262px;margin:0;display:flex;align-items:center;gap:14px;
   background:rgba(0,0,0,.6);border:1px solid var(--line-2);border-radius:999px;padding:12px 26px 12px 24px}
 .powered .k{font-family:var(--mono);font-size:18px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .powered .v{display:block;height:30px;width:auto}
@@ -52,8 +52,8 @@ h1 img{display:block;width:100%;height:auto}
     <p class="pill">Registration now open</p>
     <h1><img src="assets/contextcon-logo-white.png" alt="ContextCon: Remember everything"></h1>
     <p class="lede">A worldwide virtual hackathon for developers building the next generation of agentic apps.</p>
+    <div class="prize"><svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="#c7f252" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6h18v12a9 9 0 0 1-18 0z"/><path d="M15 10H8v4a7 7 0 0 0 7 7"/><path d="M33 10h7v4a7 7 0 0 1-7 7"/><path d="M24 27v7"/><path d="M17 42h14l-2-8H19z"/></svg><div class="txt"><span class="k">Total prize pool</span><span class="v">$10,000</span></div></div>
   </div>
-  <div class="prize"><svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="#c7f252" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6h18v12a9 9 0 0 1-18 0z"/><path d="M15 10H8v4a7 7 0 0 0 7 7"/><path d="M33 10h7v4a7 7 0 0 1-7 7"/><path d="M24 27v7"/><path d="M17 42h14l-2-8H19z"/></svg><span class="k">Total prize pool</span><span class="v">$10,000</span></div>
   <p class="powered"><span class="k">Powered by</span><img class="v" src="assets/hackerearth-logo-light.svg" alt="HackerEarth"></p>
 </main>
 </body>
