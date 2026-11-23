@@ -12,9 +12,10 @@ BANNERS = os.path.dirname(HERE)
 # Each set: id, highlighted lead (lime), rest of the hook (white), style.
 #   style "robot": robot image + Claim your spot button
 #   style "swirl": brand fluid texture, ContextCon logo on top, no button
+#   style "board": swirl + a winners-board card with an empty "your name" slot
 SETS = [
     ("set1", "$10,000", "prize money for a project you would build anyway.", "robot"),
-    ("set2", "$10,000", 'is split among builders. <span class="tail">Your name could be on it.</span>', "swirl"),
+    ("set2", "$10,000", 'is split among builders. <span class="tail">Your name could be on it.</span>', "board"),
 ]
 
 SIZES = {
@@ -216,6 +217,79 @@ SWIRL_CSS = {
 """,
 }
 
+
+BOARD_CARD = """
+    <div class="board" aria-hidden="true">
+      <div class="bh"><span>Winners board</span><span>Submissions close 17 Jan</span></div>
+      <div class="row you"><span class="rk">01</span><span class="nm">Your name<i class="cur"></i></span><span class="tag">You?</span></div>
+      <div class="row"><span class="rk">02</span><span class="bar" style="width:58%"></span></div>
+      <div class="row"><span class="rk">03</span><span class="bar" style="width:44%"></span></div>
+    </div>"""
+
+BOARD_BASE = """
+.hook .rest{line-height:1}
+.board{position:absolute;background:rgba(18,16,23,.94);border:1px solid var(--line-2);border-radius:.9em;padding:.9em 1em 1em;
+  box-shadow:0 1.5em 4em rgba(0,0,0,.55)}
+.bh{display:flex;justify-content:space-between;gap:1em;font-family:var(--mono);font-weight:500;font-size:.5em;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);padding:0 .4em .9em}
+.row{display:flex;align-items:center;gap:.8em;height:1.9em;padding:0 .8em;border-radius:.55em;border:1px solid transparent}
+.row + .row{margin-top:.2em}
+.rk{flex:none;width:1.6em;font-family:var(--mono);font-weight:500;font-size:.62em;color:var(--dim,#6a6778)}
+.bar{display:block;height:.42em;border-radius:99px;background:rgba(255,255,255,.12)}
+.row.you{background:rgba(199,242,82,.08);border-color:rgba(199,242,82,.7)}
+.row.you .rk{color:var(--lime)}
+.nm{font-family:'Bloka',var(--sans);font-weight:700;text-transform:uppercase;letter-spacing:-.0225em;font-size:.95em;color:var(--white);
+  display:flex;align-items:center}
+.cur{display:inline-block;width:.09em;height:1.05em;margin-left:.12em;background:var(--lime)}
+.tag{margin-left:auto;font-family:var(--mono);font-weight:500;font-size:.5em;letter-spacing:.16em;text-transform:uppercase;
+  color:#000;background:var(--lime);border-radius:99px;padding:.45em .9em}
+"""
+
+BOARD_CSS = {
+    "square": """
+.stage{width:1080px;height:1080px}
+.tex{position:absolute;inset:0;width:1080px;height:1080px;display:block}
+.cc{position:absolute;left:72px;top:64px;width:360px}
+.kicker{position:absolute;left:74px;top:178px;font-size:15px}
+.hook{position:absolute;left:72px;top:240px;width:940px}
+.hook .lead{font-size:168px}
+.hook .rest{margin-top:14px;font-size:54px}
+.hook .tail{margin-top:18px;font-size:30px;letter-spacing:.02em}
+.board{left:72px;top:570px;width:620px;font-size:32px}
+.meko{position:absolute;left:72px;bottom:60px;width:180px}
+.powered{position:absolute;right:64px;bottom:76px;font-size:15px;padding:10px 20px 10px 18px}
+.powered .k{font-size:13px}.powered img{height:22px}
+""",
+    "landscape": """
+.stage{width:1920px;height:1080px}
+.tex{position:absolute;inset:0;width:1920px;height:1080px;display:block}
+.cc{position:absolute;left:110px;top:96px;width:460px}
+.kicker{position:absolute;left:112px;top:240px;font-size:17px}
+.hook{position:absolute;left:110px;top:340px;width:900px}
+.hook .lead{font-size:230px}
+.hook .rest{margin-top:20px;font-size:66px;text-wrap:wrap}
+.hook .tail{margin-top:26px;font-size:40px;letter-spacing:.02em}
+.board{left:1120px;top:360px;width:680px;font-size:38px}
+.meko{position:absolute;left:110px;bottom:84px;width:220px}
+.powered{position:absolute;right:72px;bottom:96px;font-size:16px;padding:12px 24px 12px 20px}
+.powered .k{font-size:14px}.powered img{height:26px}
+""",
+    "story": """
+.stage{width:1080px;height:1920px}
+.tex{position:absolute;left:0;bottom:0;width:1080px;height:1120px;display:block}
+.cc{position:absolute;left:80px;top:280px;width:480px}
+.kicker{position:absolute;left:82px;top:432px;font-size:18px}
+.hook{position:absolute;left:80px;top:520px;width:920px}
+.hook .lead{font-size:220px}
+.hook .rest{margin-top:20px;font-size:64px}
+.hook .tail{margin-top:26px;font-size:40px;letter-spacing:.02em}
+.board{left:80px;top:960px;width:920px;font-size:40px}
+.meko{position:absolute;left:80px;top:1440px;width:200px}
+.powered{position:absolute;right:80px;top:1466px;font-size:15px;padding:10px 20px 10px 18px}
+.powered .k{font-size:13px}.powered img{height:22px}
+""",
+}
+
 SWIRL_BODY = """
     {tex}
     <div class="cc">{cc}</div>
@@ -230,6 +304,9 @@ for set_id, lead, rest, style in SETS:
         if style == "swirl":
             body = SWIRL_BODY.format(tex=texture(kind), meko=MEKO, he=HE, cc=CC, lead=lead, rest=rest)
             layout = SWIRL_CSS[kind]
+        elif style == "board":
+            body = SWIRL_BODY.format(tex=texture(kind), meko=MEKO, he=HE, cc=CC, lead=lead, rest=rest) + BOARD_CARD
+            layout = BOARD_BASE + BOARD_CSS[kind]
         else:
             body = BODY[kind].format(meko=MEKO, he=HE, cc=CC, claim=CLAIM, lead=lead, rest=rest)
             layout = LAYOUT_CSS[kind]
