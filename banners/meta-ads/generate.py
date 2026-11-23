@@ -12,6 +12,7 @@ BANNERS = os.path.dirname(HERE)
 # Each set: id, highlighted lead (lime), rest of the hook (white).
 SETS = [
     ("set1", "$10,000", "prize money for a project you would build anyway."),
+    ("set2", "$10,000", 'is split among builders. <span class="tail">Your name could be on it.</span>'),
 ]
 
 SIZES = {
@@ -44,6 +45,7 @@ body{min-height:100vh;display:grid;place-items:center;-webkit-font-smoothing:ant
 .hook{margin:0;font-family:'Bloka',var(--sans);font-weight:700;text-transform:uppercase;letter-spacing:-.0225em;color:var(--white)}
 .hook .lead{display:block;color:var(--lime);line-height:.86}
 .hook .rest{display:block;line-height:1.02;text-wrap:balance}
+.hook .tail{display:block;margin-top:.3em;color:var(--purple)}
 .cc img{display:block;width:100%;height:auto}
 .kicker{margin:0;font-family:var(--mono);font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .cta{display:inline-flex;align-items:center;gap:.5em;background:var(--purple-mid);color:var(--white);font-weight:600;
@@ -153,7 +155,7 @@ for set_id, lead, rest in SETS:
         design_w = {"square": 1080, "landscape": 1920, "story": 1080}[kind]
         body = BODY[kind].format(meko=MEKO, he=HE, cc=CC, claim=CLAIM, lead=lead, rest=rest)
         html = PAGE.format(base=BASE_CSS, layout=LAYOUT_CSS[kind], w=w, h=h, scale=w / design_w,
-                           label=f"{lead} {rest}", body=body)
+                           label=re.sub(r"<[^>]+>", "", f"{lead} {rest}"), body=body)
         out = os.path.join(HERE, f"contextcon-meta-{set_id}-{size}.html")
         open(out, "w").write(html)
         print("wrote", os.path.relpath(out))
