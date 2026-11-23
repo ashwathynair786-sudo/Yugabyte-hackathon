@@ -16,7 +16,7 @@ BANNERS = os.path.dirname(HERE)
 SETS = [
     ("set1", "$10,000", "prize money for a project you would build anyway.", "robot"),
     ("set2", "$10,000", 'is split among builders. <span class="tail"><mark>Your name</mark> could be on it.</span>', "swirl"),
-    ("set3", "Go from", '<span class="from">“I use AI”</span><span class="to">to</span><span class="goal">“I build AI agents.”</span>', "photo"),
+    ("set3", 'Go from <span class="from">“I use AI”</span>', '<span class="line2">to <span class="goal">“I build AI agents.”</span></span>', "photo"),
 ]
 
 SIZES = {
@@ -238,12 +238,12 @@ SWIRL_BODY = """
 PHOTO_BASE = """
 .glow{position:absolute;border-radius:50%;background:radial-gradient(closest-side,rgba(120,89,254,.42),rgba(74,53,162,.18) 55%,rgba(0,0,0,0))}
 .person{position:absolute;right:0;bottom:0;display:block;height:auto}
-.hook{color:var(--white)}
-.hook .lead{display:block;color:var(--white);line-height:1}
-.hook .from{display:inline-block;position:relative;color:var(--muted);line-height:1}
-.hook .from::after{content:'';position:absolute;left:-.04em;right:-.04em;top:36%;height:.085em;background:var(--purple);border-radius:99px}
-.hook .to{display:block;color:var(--white);line-height:1}
-.hook .goal{display:block;color:var(--lime);line-height:.98;text-wrap:balance}
+.hook{color:var(--white);text-transform:none;letter-spacing:-.03em}
+.hook .lead{display:block;color:var(--white);line-height:1.04}
+.hook .from{position:relative;color:var(--muted);white-space:nowrap}
+.hook .from::after{content:'';position:absolute;left:-.02em;right:-.02em;top:47%;height:.055em;background:var(--purple);border-radius:99px}
+.hook .line2{display:block;line-height:1.04;text-wrap:balance}
+.hook .goal{color:var(--lime)}
 """
 
 PHOTO_CSS = {
@@ -255,11 +255,9 @@ PHOTO_CSS = {
 .kicker{position:absolute;left:74px;top:190px;font-size:16px}
 .powered{position:absolute;right:64px;top:82px;font-size:15px;padding:10px 20px 10px 18px}
 .powered .k{font-size:13px}.powered img{height:22px}
-.hook{position:absolute;left:72px;top:290px;width:520px}
-.hook .lead{font-size:50px}
-.hook .from{margin-top:10px;font-size:76px}
-.hook .to{margin-top:14px;font-size:50px}
-.hook .goal{margin-top:10px;font-size:92px}
+.hook{position:absolute;left:72px;top:300px;width:660px}
+.hook .lead{font-size:72px}
+.hook .line2{margin-top:10px;font-size:72px}
 .meko{position:absolute;left:72px;bottom:64px;width:180px}
 """,
     "landscape": """
@@ -270,11 +268,9 @@ PHOTO_CSS = {
 .kicker{position:absolute;left:112px;top:240px;font-size:17px}
 .powered{position:absolute;right:72px;top:96px;font-size:16px;padding:12px 24px 12px 20px}
 .powered .k{font-size:14px}.powered img{height:26px}
-.hook{position:absolute;left:110px;top:330px;width:1000px}
-.hook .lead{font-size:64px}
-.hook .from{margin-top:12px;font-size:104px}
-.hook .to{margin-top:16px;font-size:64px}
-.hook .goal{margin-top:12px;font-size:128px}
+.hook{position:absolute;left:110px;top:440px;width:1010px}
+.hook .lead{font-size:106px}
+.hook .line2{margin-top:14px;font-size:106px}
 .meko{position:absolute;left:110px;bottom:84px;width:220px}
 """,
     # Meta story/reels safe zone: text clear of top ~14% and bottom ~20%
@@ -286,11 +282,9 @@ PHOTO_CSS = {
 .kicker{position:absolute;left:82px;top:432px;font-size:18px}
 .powered{position:absolute;right:80px;top:300px;font-size:15px;padding:10px 20px 10px 18px}
 .powered .k{font-size:13px}.powered img{height:22px}
-.hook{position:absolute;left:80px;top:520px;width:920px}
-.hook .lead{font-size:68px}
-.hook .from{margin-top:12px;font-size:108px}
-.hook .to{margin-top:16px;font-size:68px}
-.hook .goal{margin-top:12px;font-size:128px}
+.hook{position:absolute;left:80px;top:620px;width:940px}
+.hook .lead{font-size:100px}
+.hook .line2{margin-top:16px;font-size:100px}
 .meko{position:absolute;left:80px;top:1440px;width:200px}
 """,
 }
