@@ -12,9 +12,11 @@ BANNERS = os.path.dirname(HERE)
 # Each set: id, highlighted lead (lime), rest of the hook (white), style.
 #   style "robot": robot image + Claim your spot button
 #   style "swirl": brand fluid texture, ContextCon logo on top, no button
+#   style "photo": builder cutout image bottom-right, ContextCon logo on top, no button
 SETS = [
     ("set1", "$10,000", "prize money for a project you would build anyway.", "robot"),
     ("set2", "$10,000", 'is split among builders. <span class="tail"><mark>Your name</mark> could be on it.</span>', "swirl"),
+    ("set3", "Go from", '<span class="from">“I use AI”</span><span class="to">to</span><span class="goal">“I build AI agents.”</span>', "photo"),
 ]
 
 SIZES = {
@@ -231,12 +233,86 @@ SWIRL_BODY = """
     <div class="meko">{meko}</div>
     <p class="powered"><span class="k">Powered by</span>{he}</p>"""
 
+
+# ---- photo style: transparent builder cutout anchored bottom-right ----
+PHOTO_BASE = """
+.glow{position:absolute;border-radius:50%;background:radial-gradient(closest-side,rgba(120,89,254,.42),rgba(74,53,162,.18) 55%,rgba(0,0,0,0))}
+.person{position:absolute;right:0;bottom:0;display:block;height:auto}
+.hook{color:var(--white)}
+.hook .lead{display:block;color:var(--white);line-height:1}
+.hook .from{display:inline-block;position:relative;color:var(--muted);line-height:1}
+.hook .from::after{content:'';position:absolute;left:-.04em;right:-.04em;top:36%;height:.085em;background:var(--purple);border-radius:99px}
+.hook .to{display:block;color:var(--white);line-height:1}
+.hook .goal{display:block;color:var(--lime);line-height:.98;text-wrap:balance}
+"""
+
+PHOTO_CSS = {
+    "square": """
+.stage{width:1080px;height:1080px}
+.glow{right:-120px;bottom:-140px;width:900px;height:900px}
+.person{width:520px}
+.cc{position:absolute;left:72px;top:64px;width:400px}
+.kicker{position:absolute;left:74px;top:190px;font-size:16px}
+.powered{position:absolute;right:64px;top:82px;font-size:15px;padding:10px 20px 10px 18px}
+.powered .k{font-size:13px}.powered img{height:22px}
+.hook{position:absolute;left:72px;top:290px;width:520px}
+.hook .lead{font-size:50px}
+.hook .from{margin-top:10px;font-size:76px}
+.hook .to{margin-top:14px;font-size:50px}
+.hook .goal{margin-top:10px;font-size:92px}
+.meko{position:absolute;left:72px;bottom:64px;width:180px}
+""",
+    "landscape": """
+.stage{width:1920px;height:1080px}
+.glow{right:-80px;bottom:-200px;width:1200px;height:1200px}
+.person{width:780px}
+.cc{position:absolute;left:110px;top:96px;width:460px}
+.kicker{position:absolute;left:112px;top:240px;font-size:17px}
+.powered{position:absolute;right:72px;top:96px;font-size:16px;padding:12px 24px 12px 20px}
+.powered .k{font-size:14px}.powered img{height:26px}
+.hook{position:absolute;left:110px;top:330px;width:1000px}
+.hook .lead{font-size:64px}
+.hook .from{margin-top:12px;font-size:104px}
+.hook .to{margin-top:16px;font-size:64px}
+.hook .goal{margin-top:12px;font-size:128px}
+.meko{position:absolute;left:110px;bottom:84px;width:220px}
+""",
+    # Meta story/reels safe zone: text clear of top ~14% and bottom ~20%
+    "story": """
+.stage{width:1080px;height:1920px}
+.glow{right:-200px;bottom:-200px;width:1100px;height:1100px}
+.person{width:720px}
+.cc{position:absolute;left:80px;top:280px;width:480px}
+.kicker{position:absolute;left:82px;top:432px;font-size:18px}
+.powered{position:absolute;right:80px;top:300px;font-size:15px;padding:10px 20px 10px 18px}
+.powered .k{font-size:13px}.powered img{height:22px}
+.hook{position:absolute;left:80px;top:520px;width:920px}
+.hook .lead{font-size:68px}
+.hook .from{margin-top:12px;font-size:108px}
+.hook .to{margin-top:16px;font-size:68px}
+.hook .goal{margin-top:12px;font-size:128px}
+.meko{position:absolute;left:80px;top:1440px;width:200px}
+""",
+}
+
+PHOTO_BODY = """
+    <div class="glow" aria-hidden="true"></div>
+    <img class="person" src="../assets/neon-laptop-builder.png" alt="">
+    <div class="cc">{cc}</div>
+    <p class="kicker">Worldwide virtual hackathon</p>
+    <p class="powered"><span class="k">Powered by</span>{he}</p>
+    <h1 class="hook"><span class="lead">{lead}</span>{rest}</h1>
+    <div class="meko">{meko}</div>"""
+
 for set_id, lead, rest, style in SETS:
     for size, (w, h, kind) in SIZES.items():
         design_w = {"square": 1080, "landscape": 1920, "story": 1080}[kind]
         if style == "swirl":
             body = SWIRL_BODY.format(tex=texture(kind), meko=MEKO, he=HE, cc=CC, lead=lead, rest=rest)
             layout = SWIRL_CSS[kind]
+        elif style == "photo":
+            body = PHOTO_BODY.format(meko=MEKO, he=HE, cc=CC, lead=lead, rest=rest)
+            layout = PHOTO_BASE + PHOTO_CSS[kind]
         else:
             body = BODY[kind].format(meko=MEKO, he=HE, cc=CC, claim=CLAIM, lead=lead, rest=rest)
             layout = LAYOUT_CSS[kind]
