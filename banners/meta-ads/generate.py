@@ -9,10 +9,12 @@ import re
 HERE = os.path.dirname(os.path.abspath(__file__))
 BANNERS = os.path.dirname(HERE)
 
-# Each set: id, highlighted lead (lime), rest of the hook (white).
+# Each set: id, highlighted lead (lime), rest of the hook (white), style.
+#   style "robot": robot image + Claim your spot button
+#   style "swirl": brand fluid texture, ContextCon logo on top, no button
 SETS = [
-    ("set1", "$10,000", "prize money for a project you would build anyway."),
-    ("set2", "$10,000", 'is split among builders. <span class="tail">Your name could be on it.</span>'),
+    ("set1", "$10,000", "prize money for a project you would build anyway.", "robot"),
+    ("set2", "$10,000", 'is split among builders. <span class="tail">Your name could be on it.</span>', "swirl"),
 ]
 
 SIZES = {
@@ -150,11 +152,88 @@ PAGE = """<!doctype html>
 </html>
 """
 
-for set_id, lead, rest in SETS:
+# ---- swirl style: brand fluid texture (same construction as the key visual) ----
+kv = open(os.path.join(BANNERS, "contextcon-key-visual-2000x1200.html")).read()
+TEX_DEFS = re.search(r'<linearGradient id="g135".*?</linearGradient>', kv, re.S).group(0) + \
+    re.search(r'<filter id="marble".*?</filter>', kv, re.S).group(0)
+TEX_FLOWS = re.search(r'<g filter="url\(#marble\)">(.*?)</g>\s*</g>', kv, re.S).group(1)
+# start each flow further left so only the mask decides where the texture fades
+TEX_FLOWS = re.sub(r'd="M7([68])0 (-?\d+) C(\d+) ',
+                   lambda m: f'd="M{240 if m.group(1) == "6" else 260} {m.group(2)} C{int(m.group(3)) - 300} ', TEX_FLOWS)
+
+def texture(kind):
+    if kind == "story":   # texture along the bottom, fading upward
+        vb, x2, y2, stops = "700 -640 1300 1348", 0, 1, [(.38, 0), (.55, .35), (.75, .9), (1, 1)]
+    elif kind == "square":  # texture on the right, fading left
+        vb, x2, y2, stops = "860 -60 1260 1260", 1, 0, [(.44, 0), (.58, .3), (.78, .9), (1, 1)]
+    else:                   # landscape
+        vb, x2, y2, stops = "0 0 2000 1200", 1, 0, [(.48, 0), (.6, .3), (.8, .9), (1, 1)]
+    x, y, w, h = vb.split()
+    st = "".join(f'<stop offset="{o}" stop-color="#fff" stop-opacity="{a}"/>' for o, a in stops)
+    return (f'<svg class="tex" viewBox="{vb}" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs>{TEX_DEFS}'
+            f'<linearGradient id="fade" x1="0" y1="0" x2="{x2}" y2="{y2}">{st}</linearGradient>'
+            f'<mask id="m"><rect x="{x}" y="{y}" width="{w}" height="{h}" fill="url(#fade)"/></mask></defs>'
+            f'<g mask="url(#m)"><rect x="{x}" y="{y}" width="{w}" height="{h}" fill="url(#g135)" opacity=".18"/>'
+            f'<g filter="url(#marble)">{TEX_FLOWS}</g></g></svg>')
+
+SWIRL_CSS = {
+    "square": """
+.stage{width:1080px;height:1080px}
+.tex{position:absolute;inset:0;width:1080px;height:1080px;display:block}
+.cc{position:absolute;left:72px;top:72px;width:440px}
+.kicker{position:absolute;left:74px;top:208px;font-size:17px}
+.hook{position:absolute;left:72px;top:340px;width:640px}
+.hook .lead{font-size:200px}
+.hook .rest{margin-top:22px;font-size:60px}
+.meko{position:absolute;left:72px;bottom:64px;width:180px}
+.powered{position:absolute;right:64px;bottom:80px;font-size:15px;padding:10px 20px 10px 18px}
+.powered .k{font-size:13px}.powered img{height:22px}
+""",
+    "landscape": """
+.stage{width:1920px;height:1080px}
+.tex{position:absolute;inset:0;width:1920px;height:1080px;display:block}
+.cc{position:absolute;left:110px;top:96px;width:500px}
+.kicker{position:absolute;left:112px;top:252px;font-size:18px}
+.hook{position:absolute;left:110px;top:370px;width:980px}
+.hook .lead{font-size:240px}
+.hook .rest{margin-top:24px;font-size:72px}
+.meko{position:absolute;left:110px;bottom:84px;width:220px}
+.powered{position:absolute;right:72px;bottom:96px;font-size:16px;padding:12px 24px 12px 20px}
+.powered .k{font-size:14px}.powered img{height:26px}
+""",
+    # Meta story/reels safe zone: content clear of top ~14% and bottom ~20%
+    "story": """
+.stage{width:1080px;height:1920px}
+.tex{position:absolute;left:0;bottom:0;width:1080px;height:1120px;display:block}
+.cc{position:absolute;left:80px;top:280px;width:600px}
+.kicker{position:absolute;left:82px;top:470px;font-size:20px}
+.hook{position:absolute;left:80px;top:600px;width:920px}
+.hook .lead{font-size:230px}
+.hook .rest{margin-top:26px;font-size:72px}
+.meko{position:absolute;left:80px;top:1440px;width:200px}
+.powered{position:absolute;right:80px;top:1466px;font-size:15px;padding:10px 20px 10px 18px}
+.powered .k{font-size:13px}.powered img{height:22px}
+""",
+}
+
+SWIRL_BODY = """
+    {tex}
+    <div class="cc">{cc}</div>
+    <p class="kicker">Worldwide virtual hackathon</p>
+    <h1 class="hook"><span class="lead">{lead}</span><span class="rest">{rest}</span></h1>
+    <div class="meko">{meko}</div>
+    <p class="powered"><span class="k">Powered by</span>{he}</p>"""
+
+for set_id, lead, rest, style in SETS:
     for size, (w, h, kind) in SIZES.items():
         design_w = {"square": 1080, "landscape": 1920, "story": 1080}[kind]
-        body = BODY[kind].format(meko=MEKO, he=HE, cc=CC, claim=CLAIM, lead=lead, rest=rest)
-        html = PAGE.format(base=BASE_CSS, layout=LAYOUT_CSS[kind], w=w, h=h, scale=w / design_w,
+        if style == "swirl":
+            body = SWIRL_BODY.format(tex=texture(kind), meko=MEKO, he=HE, cc=CC, lead=lead, rest=rest)
+            layout = SWIRL_CSS[kind]
+        else:
+            body = BODY[kind].format(meko=MEKO, he=HE, cc=CC, claim=CLAIM, lead=lead, rest=rest)
+            layout = LAYOUT_CSS[kind]
+        html = PAGE.format(base=BASE_CSS, layout=layout, w=w, h=h, scale=w / design_w,
                            label=re.sub(r"<[^>]+>", "", f"{lead} {rest}"), body=body)
         out = os.path.join(HERE, f"contextcon-meta-{set_id}-{size}.html")
         open(out, "w").write(html)
