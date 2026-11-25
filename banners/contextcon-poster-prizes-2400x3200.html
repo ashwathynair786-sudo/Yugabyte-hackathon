@@ -16,39 +16,43 @@
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--ground)}
 body{min-height:100vh;display:grid;place-items:center;-webkit-font-smoothing:antialiased}
-.poster{position:relative;width:1500px;height:2000px;overflow:hidden;background:var(--ground);font-family:var(--sans);color:var(--text)}
+.poster{position:relative;width:2400px;height:3200px;overflow:hidden;background:var(--ground);font-family:var(--sans);color:var(--text)}
+.stage{position:absolute;left:0;top:0;width:1500px;height:2000px;transform:scale(1.6);transform-origin:0 0}
 .tex{position:absolute;right:0;top:0;width:1100px;height:1100px;display:block}
 .pad{position:absolute;left:110px;right:110px;top:0;bottom:0}
-.meko{position:absolute;left:0;top:104px;width:200px}
+.meko{position:absolute;left:0;top:96px;width:200px}
 .meko svg{display:block;width:100%;height:auto}
-.pill{position:absolute;right:0;top:118px;margin:0;font-family:var(--mono);font-size:17px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
+.pill{position:absolute;right:0;top:110px;margin:0;font-family:var(--mono);font-size:17px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
   color:var(--lime);background:rgba(0,0,0,.55);border:1.5px solid rgba(199,242,82,.55);border-radius:999px;padding:13px 26px;display:flex;align-items:center;gap:12px}
 .pill::before{content:'';width:9px;height:9px;border-radius:50%;background:var(--lime)}
-.cc{position:absolute;left:0;top:290px;width:470px}
+.cc{position:absolute;left:0;top:250px;width:580px}
 .cc img{display:block;width:100%;height:auto}
-h1{position:absolute;left:0;top:470px;width:1050px;margin:0;font-family:'Bloka',var(--sans);font-weight:700;font-size:112px;line-height:1.02;letter-spacing:-.03em;color:var(--white)}
+h1{position:absolute;left:0;top:428px;width:1200px;margin:0;font-family:'Bloka',var(--sans);font-weight:700;font-size:126px;line-height:1.02;letter-spacing:-.03em;color:var(--white)}
 h1 em{font-style:normal;color:var(--purple)}
-.big{position:absolute;left:-8px;top:752px;margin:0;font-family:'Bloka',var(--sans);font-weight:700;font-size:330px;line-height:.86;letter-spacing:-.035em;color:var(--lime)}
-.kick{position:absolute;left:0;top:1062px;margin:0;display:flex;align-items:center;gap:22px;font-family:var(--mono);font-weight:500;font-size:30px;letter-spacing:.24em;text-transform:uppercase;color:var(--white)}
+.big{position:absolute;left:-12px;top:764px;margin:0;font-family:'Bloka',var(--sans);font-weight:700;font-size:404px;line-height:.86;letter-spacing:-.035em;color:var(--lime)}
+.kick{position:absolute;left:0;top:1124px;margin:0;display:flex;align-items:center;gap:22px;font-family:var(--mono);font-weight:500;font-size:30px;letter-spacing:.24em;text-transform:uppercase;color:var(--white)}
 .kick::before{content:'';width:46px;height:3px;background:var(--purple);border-radius:2px}
-.tiles{position:absolute;left:0;right:0;top:1146px;display:grid;grid-template-columns:repeat(5,1fr);background:var(--panel);border:1.5px solid var(--line-2);border-radius:22px;overflow:hidden}
-.tile{padding:30px 26px 32px;display:flex;flex-direction:column;gap:10px;min-height:178px}
+.tiles{position:absolute;left:0;right:0;top:1196px;display:grid;grid-template-columns:repeat(5,1fr);background:var(--panel);border:1.5px solid var(--line-2);border-radius:22px;overflow:hidden}
+.tile{padding:26px 26px 30px;display:flex;flex-direction:column;gap:10px;min-height:206px}
 .tile + .tile{border-left:1.5px solid var(--line)}
-.tile.top{background:rgba(199,242,82,.07)}
-.amt{font-family:'Bloka',var(--sans);font-weight:700;font-size:50px;line-height:1;letter-spacing:-.02em;color:var(--white)}
+.tile.top{background:rgba(199,242,82,.08);box-shadow:inset 0 0 0 2px rgba(199,242,82,.75);border-radius:20px 0 0 20px}
+.rk{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:500;font-size:16px;letter-spacing:.16em;color:var(--dim)}
+.tile.top .rk{color:var(--lime)}
+.rk svg{width:22px;height:22px;color:var(--lime)}
+.amt{margin-top:6px;font-family:'Bloka',var(--sans);font-weight:700;font-size:58px;line-height:1;letter-spacing:-.02em;color:var(--white)}
 .tile.top .amt{color:var(--lime)}
-.lbl{font-size:21px;line-height:1.35;color:var(--muted)}
-.reg{position:absolute;left:0;right:0;top:1390px;display:flex;align-items:center;gap:64px}
-.qr{flex:none;width:400px;height:400px;background:#fff;border-radius:26px;padding:28px}
+.lbl{font-size:22px;line-height:1.35;color:var(--muted)}
+.reg{position:absolute;left:0;right:0;top:1452px;display:flex;align-items:center;gap:60px}
+.qr{flex:none;width:370px;height:370px;background:#fff;border-radius:24px;padding:24px}
 .qrsvg{display:block;width:100%;height:100%;shape-rendering:crispEdges}
-.regtxt h2{margin:0;font-family:'Bloka',var(--sans);font-weight:700;font-size:80px;line-height:1;letter-spacing:-.03em;color:var(--white)}
-.regtxt p{margin:22px 0 0;max-width:720px;text-wrap:pretty;font-size:27px;line-height:1.5;color:var(--text)}
-.chips{margin-top:28px;display:flex;flex-wrap:wrap;gap:14px}
+.regtxt h2{margin:0;font-family:'Bloka',var(--sans);font-weight:700;font-size:88px;line-height:1;letter-spacing:-.03em;color:var(--white)}
+.regtxt p{margin:18px 0 0;max-width:740px;text-wrap:pretty;font-size:27px;line-height:1.5;color:var(--text)}
+.chips{margin-top:24px;display:flex;flex-wrap:wrap;gap:14px}
 .chip{font-size:21px;font-weight:500;color:var(--white);background:rgba(120,89,254,.16);border:1.5px solid rgba(120,89,254,.55);border-radius:999px;padding:10px 22px}
-.due{margin-top:28px;display:flex;align-items:center;gap:14px;font-size:24px;font-weight:600;color:var(--white)}
+.due{margin-top:24px;display:flex;align-items:center;gap:14px;font-size:24px;font-weight:600;color:var(--white)}
 .due b{color:var(--lime);font-weight:600}
 .due svg{width:30px;height:30px;color:var(--lime)}
-.foot{position:absolute;left:0;right:0;bottom:96px;padding-top:34px;border-top:1.5px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+.foot{position:absolute;left:0;right:0;bottom:62px;padding-top:28px;border-top:1.5px solid var(--line);display:flex;align-items:center;justify-content:space-between}
 .url{font-family:var(--mono);font-size:21px;color:var(--muted)}
 .credit{display:flex;align-items:center;gap:14px;font-size:20px;color:var(--muted)}
 .credit img{display:block;height:24px;width:auto}
@@ -56,6 +60,7 @@ h1 em{font-style:normal;color:var(--purple)}
 </head>
 <body>
 <main class="poster" aria-label="ContextCon: build agents that remember everything. $10,000 total prize pool. Scan to register.">
+  <div class="stage">
   <svg class="tex" viewBox="700 -120 1300 1300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="g135" x1="0" y1="0" x2="1" y2="1">
         <stop offset="0" stop-color="#8ea8ff"/><stop offset=".35" stop-color="#7859fe"/>
         <stop offset=".62" stop-color="#4a35a2"/><stop offset="1" stop-color="#20154f"/>
@@ -89,20 +94,21 @@ h1 em{font-style:normal;color:var(--purple)}
     <h1>Build agents that <em>remember</em> everything.</h1>
     <p class="big">$10,000</p>
     <p class="kick">Total prize pool</p>
-    <div class="tiles"><div class="tile top"><span class="amt">$4,000</span><span class="lbl">Grand prize</span></div><div class="tile"><span class="amt">$2,500</span><span class="lbl">Runner-up</span></div><div class="tile"><span class="amt">$1,500</span><span class="lbl">Second runner-up</span></div><div class="tile"><span class="amt">$1,000</span><span class="lbl">Best use of shared memory</span></div><div class="tile"><span class="amt">$1,000</span><span class="lbl">People’s choice</span></div></div>
+    <div class="tiles"><div class="tile top"><span class="rk"><svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6h18v12a9 9 0 0 1-18 0z"/><path d="M15 10H8v4a7 7 0 0 0 7 7"/><path d="M33 10h7v4a7 7 0 0 1-7 7"/><path d="M24 27v7"/><path d="M17 42h14l-2-8H19z"/></svg>01</span><span class="amt">$4,000</span><span class="lbl">Grand prize</span></div><div class="tile"><span class="rk">02</span><span class="amt">$2,500</span><span class="lbl">Runner-up</span></div><div class="tile"><span class="rk">03</span><span class="amt">$1,500</span><span class="lbl">Second runner-up</span></div><div class="tile"><span class="rk">04</span><span class="amt">$1,000</span><span class="lbl">Best use of shared memory</span></div><div class="tile"><span class="rk">05</span><span class="amt">$1,000</span><span class="lbl">People’s choice</span></div></div>
     <div class="reg">
       <div class="qr"><svg class="qrsvg" viewBox="0 0 49 49" preserveAspectRatio="xMidYMid meet"><path class="qrline" stroke="#000" d="M0 0.5h7m2 0h2m4 0h1m1 0h1m1 0h2m1 0h1m4 0h1m3 0h1m3 0h1m4 0h1m1 0h7m-49 1h1m5 0h1m1 0h2m2 0h1m6 0h1m2 0h1m1 0h1m2 0h2m1 0h3m2 0h1m1 0h4m1 0h1m5 0h1m-49 1h1m1 0h3m1 0h1m1 0h6m1 0h1m1 0h1m1 0h1m1 0h1m2 0h3m1 0h7m4 0h2m1 0h1m1 0h3m1 0h1m-49 1h1m1 0h3m1 0h1m1 0h1m1 0h6m1 0h1m2 0h1m2 0h1m1 0h1m1 0h2m1 0h1m1 0h2m1 0h3m1 0h1m2 0h1m1 0h3m1 0h1m-49 1h1m1 0h3m1 0h1m4 0h1m1 0h3m3 0h8m2 0h2m1 0h1m2 0h3m4 0h1m1 0h3m1 0h1m-49 1h1m5 0h1m2 0h1m6 0h3m1 0h1m1 0h1m3 0h2m3 0h2m1 0h1m1 0h3m3 0h1m5 0h1m-49 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-41 1h3m1 0h1m1 0h1m1 0h1m1 0h5m3 0h1m1 0h6m1 0h1m2 0h2m-40 1h1m5 0h1m1 0h1m3 0h1m2 0h1m2 0h1m1 0h7m2 0h3m3 0h2m2 0h4m2 0h3m-48 1h1m1 0h1m2 0h1m1 0h2m1 0h2m1 0h1m4 0h4m3 0h2m1 0h4m1 0h3m1 0h6m2 0h2m-47 1h1m1 0h1m3 0h2m1 0h1m2 0h1m1 0h1m1 0h2m1 0h1m1 0h3m2 0h2m1 0h1m1 0h2m1 0h2m1 0h3m3 0h1m3 0h2m-47 1h3m3 0h2m1 0h2m1 0h1m1 0h4m5 0h2m1 0h2m1 0h4m2 0h1m1 0h1m3 0h3m1 0h1m-46 1h3m1 0h1m1 0h1m1 0h2m4 0h2m2 0h2m2 0h1m2 0h2m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m2 0h1m1 0h3m2 0h1m-49 1h2m1 0h1m1 0h1m1 0h2m1 0h3m1 0h2m1 0h2m4 0h1m1 0h1m1 0h1m1 0h2m1 0h2m1 0h1m1 0h1m1 0h1m2 0h2m1 0h1m1 0h1m-48 1h1m1 0h1m1 0h1m1 0h1m1 0h5m4 0h3m3 0h1m1 0h2m1 0h1m5 0h1m1 0h5m2 0h2m2 0h2m-48 1h4m4 0h2m5 0h1m1 0h1m1 0h1m1 0h2m3 0h2m1 0h3m1 0h1m1 0h1m2 0h3m3 0h2m1 0h1m-47 1h3m1 0h2m1 0h1m1 0h3m1 0h1m1 0h1m2 0h1m2 0h2m2 0h1m1 0h2m5 0h1m3 0h2m1 0h1m2 0h1m-46 1h2m1 0h1m3 0h1m1 0h1m4 0h1m3 0h1m2 0h4m1 0h1m2 0h2m4 0h2m1 0h1m1 0h5m-43 1h2m1 0h3m1 0h1m2 0h1m1 0h3m2 0h3m1 0h1m2 0h2m1 0h3m1 0h4m2 0h2m1 0h4m1 0h1m-49 1h4m7 0h4m1 0h1m2 0h3m6 0h1m3 0h2m3 0h1m1 0h1m1 0h1m1 0h3m-45 1h1m1 0h1m2 0h2m3 0h1m2 0h2m3 0h1m1 0h5m4 0h2m3 0h4m1 0h3m3 0h1m1 0h1m-47 1h1m5 0h4m1 0h1m4 0h6m2 0h1m1 0h1m1 0h2m1 0h3m2 0h6m1 0h2m-47 1h1m1 0h7m1 0h1m2 0h2m1 0h2m1 0h1m2 0h5m4 0h1m2 0h1m1 0h1m1 0h1m1 0h5m2 0h2m-45 1h1m3 0h1m1 0h2m1 0h2m3 0h3m1 0h1m3 0h3m1 0h1m1 0h2m1 0h1m1 0h1m1 0h2m3 0h2m1 0h2m-48 1h2m1 0h1m1 0h1m1 0h1m2 0h3m5 0h1m1 0h2m1 0h1m1 0h1m1 0h2m2 0h7m1 0h1m1 0h1m1 0h1m-45 1h1m1 0h1m1 0h1m3 0h1m1 0h1m4 0h3m1 0h1m1 0h2m3 0h2m1 0h5m3 0h1m2 0h1m3 0h2m-46 1h1m2 0h6m1 0h1m1 0h1m1 0h2m6 0h5m1 0h1m4 0h3m2 0h1m1 0h6m1 0h2m-49 1h1m1 0h3m2 0h2m2 0h2m1 0h3m2 0h1m1 0h1m1 0h1m1 0h2m3 0h2m2 0h1m2 0h3m1 0h1m2 0h3m-46 1h1m1 0h4m2 0h1m1 0h4m1 0h1m4 0h6m2 0h1m1 0h1m1 0h1m1 0h2m2 0h9m-44 1h1m2 0h2m2 0h1m2 0h1m1 0h5m1 0h1m1 0h1m2 0h5m1 0h1m1 0h3m3 0h3m-40 1h3m1 0h1m4 0h2m1 0h4m4 0h1m1 0h1m2 0h1m1 0h3m1 0h3m2 0h1m1 0h1m1 0h2m2 0h1m-49 1h3m1 0h1m4 0h1m1 0h3m1 0h1m1 0h6m1 0h3m2 0h1m3 0h2m1 0h1m1 0h2m1 0h1m1 0h1m4 0h1m-49 1h1m1 0h1m1 0h1m1 0h1m1 0h3m4 0h1m2 0h1m1 0h1m1 0h1m5 0h1m2 0h4m1 0h2m1 0h1m1 0h1m2 0h3m1 0h1m-49 1h2m1 0h2m2 0h6m1 0h12m3 0h1m3 0h1m1 0h1m1 0h5m1 0h4m-45 1h1m3 0h1m4 0h1m1 0h2m1 0h4m1 0h3m1 0h1m2 0h1m1 0h4m1 0h2m1 0h2m2 0h2m1 0h1m1 0h2m-47 1h1m1 0h1m2 0h2m2 0h1m3 0h2m1 0h2m4 0h6m2 0h1m4 0h4m2 0h1m1 0h1m1 0h2m-49 1h1m3 0h1m1 0h2m4 0h4m1 0h1m1 0h1m1 0h3m2 0h1m1 0h2m2 0h2m2 0h2m1 0h2m2 0h1m-43 1h2m2 0h1m1 0h5m1 0h2m3 0h2m2 0h3m3 0h4m1 0h1m1 0h1m1 0h1m2 0h1m2 0h1m-43 1h1m3 0h3m1 0h7m2 0h1m3 0h1m1 0h2m2 0h1m3 0h4m2 0h7m1 0h3m-48 1h3m3 0h1m1 0h3m4 0h2m1 0h2m1 0h3m2 0h1m2 0h2m1 0h1m4 0h2m1 0h1m1 0h1m2 0h2m-48 1h3m3 0h3m2 0h1m1 0h2m1 0h1m3 0h1m1 0h6m1 0h1m1 0h1m3 0h13m-40 1h6m1 0h1m1 0h3m2 0h1m3 0h2m1 0h5m1 0h1m1 0h1m1 0h2m3 0h1m1 0h1m-47 1h7m4 0h2m2 0h1m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h2m4 0h1m2 0h1m2 0h1m1 0h1m1 0h1m1 0h1m1 0h1m-49 1h1m5 0h1m3 0h2m1 0h4m1 0h3m1 0h1m3 0h1m1 0h2m2 0h1m4 0h4m3 0h2m1 0h2m-49 1h1m1 0h3m1 0h1m8 0h3m1 0h1m2 0h5m2 0h1m1 0h1m3 0h3m2 0h5m1 0h3m-49 1h1m1 0h3m1 0h1m2 0h2m2 0h1m1 0h1m1 0h2m1 0h2m3 0h1m1 0h1m1 0h6m1 0h4m2 0h2m1 0h1m2 0h1m-49 1h1m1 0h3m1 0h1m4 0h1m1 0h1m3 0h3m1 0h1m2 0h1m1 0h2m3 0h1m1 0h2m2 0h1m3 0h3m-44 1h1m5 0h1m2 0h5m1 0h3m4 0h1m1 0h4m2 0h2m5 0h2m1 0h3m2 0h1m2 0h1m-49 1h7m1 0h2m1 0h4m1 0h1m1 0h2m2 0h7m1 0h3m1 0h1m1 0h2m1 0h2m2 0h3m2 0h1"/></svg></div>
       <div class="regtxt">
         <h2>Scan to register</h2>
         <p>Build multi-agent apps with collective memory, shared knowledge and full decision traces on Meko.</p>
         <div class="chips"><span class="chip">Free to enter</span><span class="chip">Online &amp; global</span><span class="chip">Teams of 1–4</span></div>
-        <p class="due"><svg style="display:none" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6h18v12a9 9 0 0 1-18 0z"/><path d="M15 10H8v4a7 7 0 0 0 7 7"/><path d="M33 10h7v4a7 7 0 0 1-7 7"/><path d="M24 27v7"/><path d="M17 42h14l-2-8H19z"/></svg><svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="10" width="36" height="32" rx="5"/><path d="M6 20h36M16 5v9M32 5v9"/></svg>Submissions due <b>Jan 17, 2027</b></p>
+        <p class="due"><svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="10" width="36" height="32" rx="5"/><path d="M6 20h36M16 5v9M32 5v9"/></svg>Submissions due <b>Jan 17, 2027</b></p>
       </div>
     </div>
     <div class="foot">
       <span class="url">hackerearth.com/lp/challenges/contextcon</span>
       <span class="credit">Presented by Meko by YugabyteDB · Powered by <img src="assets/hackerearth-logo-light.svg" alt="HackerEarth"></span>
     </div>
+  </div>
   </div>
 </main>
 </body>
